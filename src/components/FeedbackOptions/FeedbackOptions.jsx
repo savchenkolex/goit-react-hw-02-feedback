@@ -12,7 +12,7 @@ class FeedbackOptions extends Component {
           return (
             <input
               onClick={event => {
-                this.props.fn(event);
+                this.props.onLeaveFeedback(event);
               }}
               className={css.input}
               type="button"

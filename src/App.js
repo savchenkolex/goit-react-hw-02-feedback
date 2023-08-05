@@ -4,6 +4,8 @@ import Section from './utils/Section';
 import Form from './components/Form';
 import FeedbackOptions from './components/FeedbackOptions';
 import Statistics from './components/Statistics';
+import Aggregator from './components/Aggregator';
+import Notification from './components/Notification';
 import Footer from './components/Footer';
 
 class App extends Component {
@@ -25,11 +27,19 @@ class App extends Component {
   };
 
   countTotalFeedback() {
-    return <span>Total</span>;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   }
 
   countPositiveFeedbackPercentage() {
-    return <span>Positive</span>;
+    const good = this.state.good;
+    const all = this.countTotalFeedback();
+
+    if (good) {
+      const rawPercentage = (good * 100) / all;
+      return Number(rawPercentage.toFixed());
+    }
+    return 0;
   }
 
   render() {
@@ -38,7 +48,10 @@ class App extends Component {
         <Container>
           <Section Title="Please leave feedback">
             <Form>
-              <FeedbackOptions options={this.options} fn={this.voiteHandler} />
+              <FeedbackOptions
+                options={this.options}
+                onLeaveFeedback={this.voiteHandler}
+              />
             </Form>
           </Section>
           <Section Title="Statistics">
@@ -46,9 +59,12 @@ class App extends Component {
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
-              total={'10'}
-              positivePercentage={'70'}
             />
+            {this.countTotalFeedback() ? <Aggregator
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            /> :
+            <Notification message="There is no feedback" />}
           </Section>
         </Container>
         <Footer />

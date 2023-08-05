@@ -1,0 +1,24 @@
+.form {
+    display: flex;
+    justify-content: space-around;
+}
+
+.input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    width: 75px;
+    height: 75px;
+    font-size: 12px;
+    transition: background-color 250ms ease-in,
+                color 250ms ease-in,
+                font-weight 250ms ease-in;
+
+}
+
+.input:hover {
+    background-color: lightslategray;
+    color: whitesmoke;
+    font-weight: 800;
+}

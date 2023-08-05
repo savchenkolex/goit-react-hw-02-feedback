@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from "react";
+import PropTypes from "prop-types";
+import PullForm from "./components/PullForm";
+import Container from "./components/Container";
+import Statistics from "./components/Statistics";
+import Footer from "./components/Footer/Footer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0  
+}
+
+//  formHeandler (e) {
+//     console.log(e);
+//   }
+
+  render() { 
+   return (<>
+    <Container>
+    <PullForm status={this.state} />
+    <Statistics status={this.state} />
+    </Container>
+    <Footer />
+    </>
+    )
+  }
 }
 
 export default App;

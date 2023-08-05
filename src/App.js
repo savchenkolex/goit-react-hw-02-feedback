@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 import PullForm from "./components/PullForm";
 import Container from "./components/Container";
 import Statistics from "./components/Statistics";

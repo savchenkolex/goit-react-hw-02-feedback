@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
+import PropTypes, { shape } from "prop-types";
 
 import css from "./PullForm.module.css";
 
@@ -33,6 +33,11 @@ class PullForm extends Component {
     }
 }
 
+PullForm.propTypes = {
+    props: PropTypes.objectOf(shape({
+        status: PropTypes.object,
+    }))   
+}
 
 
 export default PullForm;

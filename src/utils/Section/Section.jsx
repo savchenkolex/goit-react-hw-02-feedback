@@ -8,3 +8,7 @@ export default function Section ({Title, children}) {
         </div>
     )
 }
+
+Section.propTypes = {
+    Title: PropTypes.string
+}

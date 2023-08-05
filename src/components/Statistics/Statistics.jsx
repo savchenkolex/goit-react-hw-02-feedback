@@ -1,23 +1,32 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
-import css from "./Statistics.module.css";
-
+import css from './Statistics.module.css';
 
 class Statistics extends Component {
-
-
-    render() {
-        return (
-            <>
-            <h2>Statistics</h2>
-            <ul className={css.votes}>
-                <li className={css.vote}>Good: </li>
-                <li className={css.vote}>Neutral: </li>
-                <li className={css.vote}>Bad: </li>
-            </ul>
-            </>
-        )
-    }
+    
+  render() {
+    console.log(this.props);
+    return (
+      <>
+        
+        <ul className={css.votes}>
+          <li className={css.vote}>Good: {this.props.good} </li>
+          <li className={css.vote}>Neutral: {this.props.neutral}</li>
+          <li className={css.vote}>Bad: {this.props.bad}</li>
+        </ul>
+        <div className={css.aggregator}>
+          <div>
+            <p className={css["agg-title"]}>Total:</p>
+            <p>{this.props.total}</p>
+          </div>
+          <div>
+            <p className={css["agg-title"]}>Precentage:</p>
+            <p>{this.props.precentage}%</p>
+          </div>
+        </div>
+      </>
+    );
+  }
 }
 
 export default Statistics;

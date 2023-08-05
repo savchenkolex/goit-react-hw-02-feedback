@@ -6,7 +6,7 @@ import FeedbackOptions from './components/FeedbackOptions';
 import Statistics from './components/Statistics';
 import Aggregator from './components/Aggregator';
 import Notification from './components/Notification';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 class App extends Component {
   state = {

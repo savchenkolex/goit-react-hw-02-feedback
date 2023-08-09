@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
 import PropTypes, { shape } from 'prop-types';
 
 import css from './FeedbackOptions.module.css';
 
-class FeedbackOptions extends Component {
-    
-    render() {
+export default function FeedbackOptions(props) {
+  return (
+    <>
+      {props.options.map(element => {
         return (
-      <>
-        { this.props.options.map(element => {
-          return (
-            <input
-              onClick={event => {
-                this.props.onLeaveFeedback(event);
-              }}
-              className={css.input}
-              type="button"
-              value={element.toUpperCase()}
-            />
-          );
-        })}
-      </>
-    );
-  }
+          <button
+            key={element.toUpperCase()}
+            onClick={event => {
+              props.onLeaveFeedback(event);
+            }}
+            className={css.input}
+            type="button"
+          >
+            {element.toUpperCase()}
+          </button>
+        );
+      })}
+    </>
+  );
 }
 
 FeedbackOptions.propTypes = {
@@ -32,5 +30,3 @@ FeedbackOptions.propTypes = {
     })
   ),
 };
-
-export default FeedbackOptions;

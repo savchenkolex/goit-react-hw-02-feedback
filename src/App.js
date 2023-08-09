@@ -4,7 +4,6 @@ import Section from './utils/Section';
 import Form from './components/Form';
 import FeedbackOptions from './components/FeedbackOptions';
 import Statistics from './components/Statistics';
-import Aggregator from './components/Aggregator';
 import Notification from './components/Notification';
 // import Footer from './components/Footer';
 
@@ -18,7 +17,8 @@ class App extends Component {
   options = Object.keys(this.state);
 
   voiteHandler = event => {
-    const option = event.target.value.toLowerCase();
+    
+    const option = event.target.textContent.toLowerCase();
     this.setState(pervState => {
       return {
         [option]: pervState[option] + 1,
@@ -55,16 +55,18 @@ class App extends Component {
             </Form>
           </Section>
           <Section Title="Statistics">
-            <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-            />
-            {this.countTotalFeedback() ? <Aggregator
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
-            /> :
-            <Notification message="There is no feedback" />}
+            
+            {this.countTotalFeedback() ? (
+              <Statistics
+                good={this.state.good}
+                neutral={this.state.neutral}
+                bad={this.state.bad}
+                total={this.countTotalFeedback()}
+                positivePercentage={this.countPositiveFeedbackPercentage()}
+              />
+            ) : (
+              <Notification message="There is no feedback" />
+            )}
           </Section>
         </Container>
         {/* <Footer /> */}

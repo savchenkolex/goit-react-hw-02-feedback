@@ -2,31 +2,28 @@ import PropTypes, { shape } from 'prop-types';
 
 import css from './FeedbackOptions.module.css';
 
-export default function FeedbackOptions(props) {
+export default function FeedbackOptions({options, onLeaveFeedback}) {
   return (
-    <>
-      {props.options.map(element => {
+    <div className={css["btn-wrapper"]}>
+      {options.map(element => {
         return (
           <button
             key={element.toUpperCase()}
-            onClick={event => {
-              props.onLeaveFeedback(event);
+            onClick={() => {
+              onLeaveFeedback(element.toLowerCase());
             }}
-            className={css.input}
+            className={css.btn}
             type="button"
           >
             {element.toUpperCase()}
           </button>
         );
       })}
-    </>
+    </div>
   );
 }
 
 FeedbackOptions.propTypes = {
-  props: PropTypes.objectOf(
-    shape({
       options: PropTypes.array,
-    })
-  ),
+      onLeaveFeedback: PropTypes.func,
 };

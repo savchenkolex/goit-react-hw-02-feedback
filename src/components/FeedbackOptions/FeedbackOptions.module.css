@@ -1,6 +1,9 @@
+.btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
 
-
-.input {
+.btn {
     padding: 8px;
     border: none;
     outline: none;
@@ -14,7 +17,7 @@
 
 }
 
-.input:hover {
+.btn:hover {
     background-color: lightslategray;
     color: whitesmoke;
     font-weight: 800;

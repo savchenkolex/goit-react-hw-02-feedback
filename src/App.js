@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Container from './utils/Container';
 import Section from './utils/Section';
-import Form from './components/Form';
+
 import FeedbackOptions from './components/FeedbackOptions';
 import Statistics from './components/Statistics';
 import Notification from './components/Notification';
-// import Footer from './components/Footer';
+
 
 class App extends Component {
   state = {
@@ -14,11 +14,8 @@ class App extends Component {
     bad: 0,
   };
 
-  options = Object.keys(this.state);
-
-  voiteHandler = event => {
+  voiteHandler = option => {
     
-    const option = event.target.textContent.toLowerCase();
     this.setState(pervState => {
       return {
         [option]: pervState[option] + 1,
@@ -47,12 +44,10 @@ class App extends Component {
       <>
         <Container>
           <Section Title="Please leave feedback">
-            <Form>
               <FeedbackOptions
-                options={this.options}
+                options={Object.keys(this.state)}
                 onLeaveFeedback={this.voiteHandler}
               />
-            </Form>
           </Section>
           <Section Title="Statistics">
             

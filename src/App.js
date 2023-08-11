@@ -6,7 +6,6 @@ import FeedbackOptions from './components/FeedbackOptions';
 import Statistics from './components/Statistics';
 import Notification from './components/Notification';
 
-
 class App extends Component {
   state = {
     good: 0,
@@ -15,7 +14,6 @@ class App extends Component {
   };
 
   voiteHandler = option => {
-    
     this.setState(pervState => {
       return {
         [option]: pervState[option] + 1,
@@ -44,13 +42,12 @@ class App extends Component {
       <>
         <Container>
           <Section Title="Please leave feedback">
-              <FeedbackOptions
-                options={Object.keys(this.state)}
-                onLeaveFeedback={this.voiteHandler}
-              />
+            <FeedbackOptions
+              options={Object.keys(this.state)}
+              onLeaveFeedback={this.voiteHandler}
+            />
           </Section>
           <Section Title="Statistics">
-            
             {this.countTotalFeedback() ? (
               <Statistics
                 good={this.state.good}
